@@ -1,51 +1,52 @@
 import pandas as pd
-import plotly.express as px  # (version 4.7.0 or higher)
-import plotly.graph_objects as go
-from dash import Dash, dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
+import plotly.express as px
+from dash import Dash, dcc, html, Input, Output
+import dash_bootstrap_components as dbc
+import dash
 
+app = Dash(__name__, 
+external_stylesheets=[dbc.themes.BOOTSTRAP],
+meta_tags=[
+    {"name": "viewport", "content": "width=device-width, initial-scale=1"},
+    ],
+)
 
-
-app = Dash(__name__)
-
-# -- Import and clean data (importing csv into pandas)
-# df = pd.read_csv("intro_bees.csv")
 ex = pd.read_excel(r"after prepare.xlsx",sheet_name = "expenditure")
 ex = ex[['Years','Constant 1990  prices']]
 en = pd.read_excel(r"after prepare.xlsx",sheet_name = "enrolment")
 ins = pd.read_excel(r"after prepare.xlsx",sheet_name = "institutional_distribution")
 
-# ------------------------------------------------------------------------------
-# App layout
+
+
 app.layout = html.Div([
 
-    html.H1("Web Application Dashboards with Dash", style={'text-align': 'center'}),
-
+    html.H1("Data visualization on public education in the UK 1833-2019.", style={'text-align': 'center'}),
     dcc.Dropdown(id="select_dataset",
                  options=[
-                     {"label": "Public expenditure on education in the UK (1833-2019)", "value": 1},
-                     {"label": "2016", "value": 2},
-                     {"label": "2017", "value": 3},
+                     {"label": "Public expenditure on education in the UK from 1833 to 2019 (constant price of 2019).", "value": 1},
+                     {"label": "Trend of enrolment distributed by level in UK public education from 1854 to 2019.", "value": 2},
+                     {"label": "Distribution of public expenditure on education in the UK by spenders from 1880 to 2019.", "value": 3},
                          ],
                  multi=False,
                  value=1,
-                 style={'width': "40%"}
+                 style={'width': "60%"}
                  ),
 
-    html.Div(id='output_container', children=[]),
+    html.Div(id='container', children=[]),
     html.Br(),
-
-    dcc.Graph(id='my_bee_map', figure={})
-
+    dcc.Graph(id='graph', figure={}),
 ])
 
 
-# ------------------------------------------------------------------------------
-# Connect the Plotly graphs with Dash Components
+
 @app.callback(
-    [Output(component_id='output_container', component_property='children'),
-     Output(component_id='my_bee_map', component_property='figure')],
+    [Output(component_id='container', component_property='children'),
+     Output(component_id='graph', component_property='figure')],
     [Input(component_id='select_dataset', component_property='value')]
 )
+
+
+
 def update_graph(option_slctd):
     print(option_slctd)
     print(type(option_slctd))
@@ -55,19 +56,32 @@ def update_graph(option_slctd):
     exx = ex.copy()
     enn = en.copy()
     inss = ins.copy()
-    dff = dff[dff["Year"] == option_slctd]
-    dff = dff[dff["Affected by"] == "Varroa_mites"]
 
     # Plotly Express
-    fig = px.line(
-        exx,
-        x='year',
-        y='price of education(1990 price constant)'
-        color_continuous_scale=px.colors.sequential.YlOrRd,
-        template='plotly_dark'
-    )
-
-
+    if option_slctd == 1:
+        fig = px.line(
+            exx,
+            x="Years",
+            y="Constant 1990  prices",
+            template='simple_white',)
+        
+    if option_slctd == 2:
+        #data normalization
+        for column in enn.columns:
+            enn[column] = enn[column]  / enn[column].abs().max()
+        enn['Years'] = en['Years']
+        fig = px.line(
+            enn,
+            x="Years",
+            y=['TOTAL','Primaire','Secondaire','Higher education ','Special','Further Education'],
+            template='simple_white',)
+        
+    if option_slctd == 3:
+        fig = px.line(
+            inss,
+            x="Years",
+            y=['Total','Central Government','LEA','UGC'],
+            template='simple_white',)
     return container, fig
 
 
