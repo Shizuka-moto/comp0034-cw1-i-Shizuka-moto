@@ -17,3 +17,10 @@ for column in enn.columns:
 enn['Years'] = en['Years']
 print(enn)
 y=["TOTAL","Primaire","Secondaire","Higher education","Special","Further Education"]
+
+
+        fig2 = px.bar(
+            enn,
+            x = enn.loc[0].at["Grades"],
+            y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
+        )
