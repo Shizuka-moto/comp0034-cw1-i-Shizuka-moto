@@ -28,21 +28,23 @@ app.layout = html.Div([
                      {"label": "Distribution of public expenditure on education in the UK by spenders from 1880 to 2019.", "value": 3},
                          ],
                  multi=False,
-                 value=1,
+                 value=2,
                  style={'width': "60%"}
                  ),
 
     html.Div(id='container', children=[]),
     html.Br(),
     dcc.Graph(id='graph', figure={}),
+    dcc.Graph(id='graph2', figure={}),
 ])
 
 
 
 @app.callback(
     [Output(component_id='container', component_property='children'),
-     Output(component_id='graph', component_property='figure')],
-    [Input(component_id='select_dataset', component_property='value')]
+     Output(component_id='graph', component_property='figure'),
+     Output(component_id='graph2', component_property='figure')],
+    [Input(component_id='select_dataset', component_property='value'),]
 )
 
 
@@ -61,10 +63,10 @@ def update_graph(option_slctd):
     if option_slctd == 1:
         fig = px.line(
             exx,
-            x="Years",
-            y="Constant 1990  prices",
-            template='simple_white',)
-        
+            x = "Years",
+            y = "Constant 1990  prices",
+            template = 'simple_white',)
+
     if option_slctd == 2:
         #data normalization
         for column in enn.columns:
@@ -75,6 +77,11 @@ def update_graph(option_slctd):
             x="Years",
             y=['TOTAL','Primaire','Secondaire','Higher education ','Special','Further Education'],
             template='simple_white',)
+        fig2 = px.bar(
+            enn,
+            x = "Years",
+            y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
+        )
         
     if option_slctd == 3:
         fig = px.line(
@@ -82,7 +89,12 @@ def update_graph(option_slctd):
             x="Years",
             y=['Total','Central Government','LEA','UGC'],
             template='simple_white',)
-    return container, fig
+        fig2 = px.bar(
+            enn,
+            x = "Years",
+            y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
+        )
+    return container, fig, fig2
 
 
 # ------------------------------------------------------------------------------
