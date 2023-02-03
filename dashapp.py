@@ -2,7 +2,8 @@ import pandas as pd
 import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
-import dash
+
+
 
 app = Dash(__name__, 
 external_stylesheets=[dbc.themes.BOOTSTRAP],
@@ -11,16 +12,17 @@ meta_tags=[
     ],
 )
 
+
+
 ex = pd.read_excel(r"after prepare.xlsx",sheet_name = "expenditure")
-ex = ex[['Years','Constant 1990  prices']]
+ex = ex[['Years','Constant 1990  prices','Education Price Index']]
 en = pd.read_excel(r"after prepare.xlsx",sheet_name = "enrolment")
 ins = pd.read_excel(r"after prepare.xlsx",sheet_name = "institutional_distribution")
 
 
 
 app.layout = html.Div([
-
-    html.H1("Data visualization on public education in the UK 1833-2019.", style={'text-align': 'center'}),
+    html.H1("Data visualization about education in the UK 1833-2019.", style={'text-align': 'center'}),
     dcc.Dropdown(id="select_dataset",
                  options=[
                      {"label": "Public expenditure on education in the UK from 1833 to 2019 (constant price of 2019).", "value": 1},
@@ -29,7 +31,7 @@ app.layout = html.Div([
                          ],
                  multi=False,
                  value=2,
-                 style={'width': "60%"}
+                 style={'width': "80%"}
                  ),
 
     html.Div(id='container', children=[]),
@@ -54,49 +56,62 @@ def update_graph(option_slctd):
     print(type(option_slctd))
 
     container = "The dataset chosen by user was: {}".format(option_slctd)
-
     exx = ex.copy()
     enn = en.copy()
     inss = ins.copy()
 
-    # Plotly Express
     if option_slctd == 1:
         fig = px.line(
             exx,
             x = "Years",
             y = "Constant 1990  prices",
-            template = 'simple_white',)
+            title="Public expenditure on education in the UK from 1833 to 2019 (constant price of 2019)")
+        fig2 = px.line(
+            exx,
+            x = "Years",
+            y = "Education Price Index",
+            title="Education Price Index in the UK from 1833 to 2019")
 
     if option_slctd == 2:
+        ennn = enn.copy()
         #data normalization
-        for column in enn.columns:
-            enn[column] = enn[column]  / enn[column].abs().max()
-        enn['Years'] = en['Years']
+        for column in ennn.columns:
+            ennn[column] = ennn[column]  / ennn[column].abs().max()
+        ennn['Years'] = enn['Years']
         fig = px.line(
-            enn,
+            ennn,
             x="Years",
             y=['TOTAL','Primaire','Secondaire','Higher education ','Special','Further Education'],
-            template='simple_white',)
+            title="Plot of trend of enrolment distributed by level in UK public education from 1854 to 2019 (after normalized)",
+            )
         fig2 = px.bar(
             enn,
             x = "Years",
             y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
-        )
+            title="Amount of enrolment distributed by level in UK public education from 1854 to 2019",
+        ).update_layout(xaxis_title="Years", yaxis_title="amount of people by different level of enrolment from 1854 to 2019")
         
     if option_slctd == 3:
+        insss = inss.copy()
+        #data normalization
+        for column in insss.columns:
+            insss[column] = insss[column]  / insss[column].abs().max()
+        insss['Years'] = inss['Years']
         fig = px.line(
-            inss,
+            insss,
             x="Years",
             y=['Total','Central Government','LEA','UGC'],
-            template='simple_white',)
+            title="Plot of trend of Distribution of public expenditure on education in the UK by spenders from 1880 to 2019 (after normalized)",
+            )
         fig2 = px.bar(
-            enn,
+            inss,
             x = "Years",
-            y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
-        )
+            y = ['Central Government','LEA','UGC'],
+            title="Amount of public expenditure on education in the UK by spenders from 1880 to 2019",
+        ).update_layout(xaxis_title="Years", yaxis_title="amount of public expenditure on education in the UK by spenders")
     return container, fig, fig2
 
 
-# ------------------------------------------------------------------------------
+
 if __name__ == '__main__':
     app.run_server(debug=True)

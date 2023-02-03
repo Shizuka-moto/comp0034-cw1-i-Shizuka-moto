@@ -12,15 +12,11 @@ en = pd.read_excel(r"after prepare.xlsx",sheet_name = "enrolment")
 enn = en.copy()
 ins = pd.read_excel(r"after prepare.xlsx",sheet_name = "institutional_distribution")
 
-for column in enn.columns:
-    enn[column] = enn[column]  / enn[column].abs().max()
-enn['Years'] = en['Years']
-print(enn)
-y=["TOTAL","Primaire","Secondaire","Higher education","Special","Further Education"]
 
+ennn = enn.copy()
+#data normalization
+for column in ennn.columns:
+    ennn[column] = ennn[column]  / ennn[column].abs().max()
+ennn['Years'] = enn['Years']
 
-        fig2 = px.bar(
-            enn,
-            x = enn.loc[0].at["Grades"],
-            y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
-        )
+print(ennn)
