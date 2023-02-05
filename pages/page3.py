@@ -22,7 +22,7 @@ layout = html.Div(
             insss,
             x="Years",
             y=['Total','Central Government','LEA','UGC'],
-            title="Plot of trend of Distribution of public expenditure on education in the UK by spenders from 1880 to 2019 (after normalized)",
+            title="Trend of Distribution of public expenditure on education in the UK by spenders from 1880 to 2019 (after normalized)",
             )
                   ),
         dcc.Graph(id='bar-fig2',
@@ -31,7 +31,7 @@ layout = html.Div(
             x = "Years",
             y = ['Central Government','LEA','UGC'],
             title="Amount of public expenditure on education in the UK by spenders from 1880 to 2019",
-        ).update_layout(xaxis_title="Years", yaxis_title="amount of public expenditure on education in the UK by spenders")),
+        ).update_layout(xaxis_title="Years", yaxis_title="amount")),
         dcc.Graph(id='pie-chart2', figure={}),
         dcc.Slider(min=1880,
                    max=2019,
@@ -40,13 +40,13 @@ layout = html.Div(
                    tooltip={"placement": "bottom", "always_visible": True},
                    updatemode='drag',
                    persistence=True,
-                   id='my-slider'
+                   id='my-slider2',
         ),
     ]
 )
 @callback(
     Output(component_id='pie-chart2', component_property='figure'),
-    Input(component_id='my-slider', component_property='value')
+    Input(component_id='my-slider2', component_property='value')
 )
 def update_graph(input_value):
     fig1 = px.pie(

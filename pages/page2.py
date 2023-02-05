@@ -22,7 +22,7 @@ layout = html.Div(
             ennn,
             x="Years",
             y=['Primaire','Secondaire','Higher education ','Special','Further Education'],
-            title="Plot of trend of enrolment distributed by level in UK public education from 1854 to 2019 (after normalized)",
+            title="Trend of enrolment distributed by level in UK public education from 1854 to 2019 (after normalized)",
             )
         ),
         dcc.Graph(id='bar-fig2',
@@ -31,7 +31,7 @@ layout = html.Div(
             x = "Years",
             y = ['Primaire','Secondaire','Higher education ','Special','Further Education'],
             title="Amount of enrolment distributed by level in UK public education from 1854 to 2019",
-        ).update_layout(xaxis_title="Years", yaxis_title="amount of people by different level of enrolment from 1854 to 2019")
+        ).update_layout(xaxis_title="Years", yaxis_title="amount")
                   ),
         dcc.Graph(id='pie-chart', figure={}),
         dcc.Slider(min=1854,
@@ -41,7 +41,7 @@ layout = html.Div(
                    tooltip={"placement": "bottom", "always_visible": True},
                    updatemode='drag',
                    persistence=True,
-                   id='my-slider'
+                   id='my-slider',
         ),
         ])
 @callback(
