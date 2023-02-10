@@ -1,15 +1,19 @@
 import dash
-from dash import html, dcc
+from dash import html
 import dash_bootstrap_components as dbc
+"""
+Program name: dashapp.py
+Student number: 20054718
 
+Integrate all the page together and set how navigare bar looks like and include.
+All the page files are in folder named "page"
+"""
 app = dash.Dash(__name__, 
                 external_stylesheets=[dbc.themes.BOOTSTRAP],
                 meta_tags=[
                     {"name": "viewport", "content": "width=device-width, initial-scale=1"},
                     ],
                 use_pages=True)
-
-
 
 app.layout = html.Div(
     [   
@@ -26,7 +30,6 @@ app.layout = html.Div(
         dash.page_container
     ]
 )
-
 
 if __name__ == "__main__":
     app.run(debug=True)

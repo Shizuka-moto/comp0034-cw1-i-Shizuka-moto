@@ -2,8 +2,12 @@ import dash
 from dash import dcc, html
 import plotly.express as px
 import pandas as pd
-from dash import Dash, dcc, html, Input, Output
+"""
+Program name: page1.py
+Student number: 20054718
 
+Layout of first page, including praphs.
+"""
 dash.register_page(__name__, path='/')
 
 ex = pd.read_excel(r"after prepare.xlsx",sheet_name = "expenditure")

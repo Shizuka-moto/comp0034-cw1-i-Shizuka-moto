@@ -2,8 +2,13 @@ import dash
 from dash import dcc, html
 import plotly.express as px
 import pandas as pd
-from dash import Dash, dcc, html, Input, Output, callback
+from dash import dcc, html, Input, Output, callback
+"""
+Program name: page2.py
+Student number: 20054718
 
+Layout of second page, including graphs, slider and callback.
+"""
 dash.register_page(__name__)
 
 en = pd.read_excel(r"after prepare.xlsx",sheet_name = "enrolment")
@@ -49,6 +54,15 @@ layout = html.Div(
     Input(component_id='my-slider', component_property='value')
 )
 def update_graph(input_value):
+    """
+       update graph according to slider input.
+
+       Args:
+       input_value: input year value of slider
+
+       Return
+       pie chart relate to input onformation.
+    """
     fig1 = px.pie(
             enn_t,
             values = input_value - 1854,

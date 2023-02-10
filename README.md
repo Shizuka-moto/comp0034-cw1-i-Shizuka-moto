@@ -80,8 +80,8 @@ becomes quiet clear now. The trend is clear if user slide the slider. By single 
 ![image](ee0a9023b93ae504d0e12d84dbf8a03.png)
 Use multipage method to separate three sheets into three pages, meet Joan's requirements of well organised.
 Use navigate bar to show the link for three pages.
-Use external_stylesheets=[dbc.themes.BOOTSTRAP] method to give dash app ability of display on different size of page
-
+Use external_stylesheets=[dbc.themes.BOOTSTRAP] method to give dash app ability of display on different size of page.
+Use pylint to fix the code.
 
 
 Public expenditure on education in the UK (1833-2019) page:
