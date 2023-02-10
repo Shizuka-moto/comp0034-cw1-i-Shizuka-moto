@@ -1,5 +1,6 @@
-# COMP0034 Coursework 1 template repository
+# COMP0034 Coursework 1 repository
 URL to your GitHub repo: https://github.com/ucl-comp0035/comp0034-cw1-i-Shizuka-moto.git
+![image](progress.png)
 # Set-up instructions
 All function packages were preinstalled.
 1. Open the repository folder (in this case, "comp0034-cw1-i-Shizuka-moto-1") in Visual Studio Code.
@@ -9,6 +10,7 @@ All function packages were preinstalled.
 3. There would be a navigate bar on the top of page, single click on the dataset you need./
    In second and third page of dash app, there's a slider using callback for user to go through specific year of data.
 # Visualisation design
+
         Joan's question and my solution:
 
 1: Make the app easy to use. Since not all of the citizens an expert in computer engineering。
@@ -39,37 +41,37 @@ Solution: Use line chart to display the trend (normalize data), also plot bar ch
         visualization design:
 
 Public expenditure on education in the UK (1833-2019) page:
-first graph: Since we only have one column of relative data, plot it without normalization.
+first graph: Since we only have one column of relative data, plot it without normalization. There is only one line, which means one colour is enough for user. But we do add xaxis, yaxis name and title for the graph.
 ![image](firstpagefirstgraph.png)
-second graph: Since we only have one column of relative data, plot it without normalization.
+second graph: Since we only have one column of relative data, plot it without normalization. There is only one line, which means one colour is enough for user. But we do add xaxis, yaxis name and title for the graph.
 ![image](firstpagesecondgraph.png)
 
 
 Enrolment distributed by level in UK public education (1854-2019) page:
 first graph: Since Joan want the comparison of different level of enrolment,
 line chart after normalized would be the best choice in this case[1]. Cause after normalize, the magnitude of
-data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
+data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight. Assign different colours to different lines. Click on the legend to hide specific lines and double click on the legend to highlight specific lines. Specific parts of the image can be enlarged and automatic size adaptation is supported.
 ![image](secondpagefirstgraph.png)
 second graph: In order to illustrate the occupation of every institutions in specific year to Joan, using bar chart is the best choice in this case[1]. User
 would know which level of enrolment has the largest population directly. Get the data of specific level in specific year with just 
-put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
+put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight. Assign different colours to the different bar components. Click on a legend to hide a specific section. Support for zooming in on specific parts of the image and automatic size adaptation.
 ![image](secondpagesecondgraph.png)
 Third graph: Joan wants to view data by specific year, and want to know the change in percentage of data. In this case, create a 
 slider through callback function. User could choose specific year data, in this case the percentage of every level of enrolment 
-becomes quiet clear now. The trend is clear if user slide the slider. By single click on the legend next to graph, user can hide or show specific data.
+becomes quiet clear now. The trend is clear if user slide the slider. Assign different colours to the different pie chart components. Click on a legend to hide a specific section. Automatic size adaptation is supported. Slider bars increase user interaction with the software. Users can visually see how the percentage of different components changes over the years.
 ![image](secondpagethirdgraph.png)
 
 
 Distribution of public expenditure on education in the UK by spenders (1880-2019) page:
-first graph: Since Joan want the comparison of different institutions data, line chart after normalized would be the best choice in this case[1]. Cause after normalize, the magnitude of data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
+first graph: Since Joan want the comparison of different institutions data, line chart after normalized would be the best choice in this case[1]. Cause after normalize, the magnitude of data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight. Assign different colours to different lines. Click on the legend to hide specific lines and double click on the legend to highlight specific lines. Specific parts of the image can be enlarged and automatic size adaptation is supported.
 ![image](thirdpagefirstgraph.png)
 second graph: In order to illustrate the occupation of every institutions in specific year to Joan, using bar chart is the best choice in this case[1]. User
 would know which level of enrolment has the largest population directly. Get the data of specific level in specific year with just 
-put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
+put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight. Assign different colours to the different bar components. Click on a legend to hide a specific section. Support for zooming in on specific parts of the image and automatic size adaptation.
 ![image](thirdpagesecondgraph.png)
 Third graph: Joan wants to view data by specific year, and want to know the change in percentage of data. In this case, create a 
 slider through callback function. User could choose specific year data, in this case the percentage of every institutions 
-becomes quiet clear now. The trend is clear if user slide the slider. By single click on the legend next to graph, user can hide or show specific data.
+becomes quiet clear now. The trend is clear if user slide the slider. By single click on the legend next to graph, user can hide or show specific data. Assign different colours to the different pie chart components. Click on a legend to hide a specific section. Automatic size adaptation is supported. Slider bars increase user interaction with the software. Users can visually see how the percentage of different components changes over the years.
 ![image](thirdpagethirdgraph.png)
 
     reference:

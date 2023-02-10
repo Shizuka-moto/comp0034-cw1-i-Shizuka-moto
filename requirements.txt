@@ -2,4 +2,4 @@ pandas
 openpyxl
 dash
 dash-bootstrap-components
-pytest
+plotly
