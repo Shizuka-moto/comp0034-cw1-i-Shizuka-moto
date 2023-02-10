@@ -12,7 +12,7 @@ app = dash.Dash(__name__,
 
 
 app.layout = html.Div(
-    [
+    [   
         dbc.Nav(
             [
                 dbc.NavLink("Public expenditure on education in the UK (1833-2019)", href="/", active="exact"),
