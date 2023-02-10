@@ -40,37 +40,37 @@ Solution: Use line chart to display the trend (normalize data), also plot bar ch
 
 Public expenditure on education in the UK (1833-2019) page:
 first graph: Since we only have one column of relative data, plot it without normalization.
-![image](first_page_first_graph.png)
+![image](firstpagefirstgraph.png)
 second graph: Since we only have one column of relative data, plot it without normalization.
-![image](first page second graph.png)
+![image](firstpagesecondgraph.png)
 
 
 Enrolment distributed by level in UK public education (1854-2019) page:
 first graph: Since Joan want the comparison of different level of enrolment,
 line chart after normalized would be the best choice in this case[1]. Cause after normalize, the magnitude of
 data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
-![image](second page first graph.png)
+![image](secondpagefirstgraph.png)
 second graph: In order to illustrate the occupation of every institutions in specific year to Joan, using bar chart is the best choice in this case[1]. User
 would know which level of enrolment has the largest population directly. Get the data of specific level in specific year with just 
 put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
-![image](second page second graph.png)
+![image](secondpagesecondgraph.png)
 Third graph: Joan wants to view data by specific year, and want to know the change in percentage of data. In this case, create a 
 slider through callback function. User could choose specific year data, in this case the percentage of every level of enrolment 
 becomes quiet clear now. The trend is clear if user slide the slider. By single click on the legend next to graph, user can hide or show specific data.
-![image](second page third graph.png)
+![image](secondpagethirdgraph.png)
 
 
 Distribution of public expenditure on education in the UK by spenders (1880-2019) page:
 first graph: Since Joan want the comparison of different institutions data, line chart after normalized would be the best choice in this case[1]. Cause after normalize, the magnitude of data could be ignored. We only focus on the trend of every line. Which means the trend is been enhanced. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
-![image](third page first graph.png)
+![image](thirdpagefirstgraph.png)
 second graph: In order to illustrate the occupation of every institutions in specific year to Joan, using bar chart is the best choice in this case[1]. User
 would know which level of enrolment has the largest population directly. Get the data of specific level in specific year with just 
 put mouse on graph. By single click on the legend next to graph, user can hide or show specific line. And double click for highlight.
-![image](third page second graph.png)
+![image](thirdpagesecondgraph.png)
 Third graph: Joan wants to view data by specific year, and want to know the change in percentage of data. In this case, create a 
 slider through callback function. User could choose specific year data, in this case the percentage of every institutions 
 becomes quiet clear now. The trend is clear if user slide the slider. By single click on the legend next to graph, user can hide or show specific data.
-![image](third page third graph.png)
+![image](thirdpagethirdgraph.png)
 
     reference:
 [1] How to choose the best chart or graph for your data | google cloud blog (no date) Google. Google. Available at: https://cloud.google.com/blog/products/data-analytics/different-types-graphs-charts-uses (Accessed: February 8, 2023). 
